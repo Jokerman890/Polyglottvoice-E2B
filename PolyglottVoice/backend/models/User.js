@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
+  googleId: {
+    type: String,
+    required: true
+  },
+  appleId: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  subscription: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Subscription'
+  }
+});
+
+module.exports = mongoose.model('User', UserSchema);
